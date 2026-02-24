@@ -81,7 +81,7 @@ sparse-chromosphere/
 ### 1. Clone / Navigate to project
 
 ```bash
-cd sparse-chromosphere
+cd Sales_CRM
 ```
 
 ### 2. Backend Setup
