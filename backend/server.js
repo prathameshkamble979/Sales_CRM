@@ -35,7 +35,20 @@ const authLimiter = rateLimit({
 });
 
 // ── Middleware ─────────────────────────────────────────────────────────────────
-app.use(cors());
+const allowedOrigins = [
+    'http://localhost:3000',
+    process.env.CLIENT_URL, // e.g. https://your-app.vercel.app
+].filter(Boolean);
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow requests with no origin (mobile apps, curl, Postman)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        return callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true,
+}));
 app.use(express.json());
 app.use(globalLimiter);
 
