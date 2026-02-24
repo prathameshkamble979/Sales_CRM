@@ -37,7 +37,8 @@ const authLimiter = rateLimit({
 // ── Middleware ─────────────────────────────────────────────────────────────────
 const allowedOrigins = [
     'http://localhost:3000',
-    process.env.CLIENT_URL, // e.g. https://your-app.vercel.app
+    'https://sales-crm-two-delta.vercel.app', // production frontend
+    process.env.CLIENT_URL,                    // override via env if needed
 ].filter(Boolean);
 
 app.use(cors({
